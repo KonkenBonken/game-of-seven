@@ -1,5 +1,6 @@
 $ball-clr: hsl(203, 80%, 43%);
 $walls-clr: hsl(203, 27%, 65%);
+$num-clr: hsl(210, 20%, 15%);
 $bg-clr: hsl(203, 13%, 9%);
 
 body, :root {
@@ -37,4 +38,15 @@ h1 {
   aspect-ratio: 1;
   height: 5em;
   transform: translate(-50%, -50%)
+}
+
+#number {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  font-size: 75em;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  color: $num-clr;
 }
