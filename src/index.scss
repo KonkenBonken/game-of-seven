@@ -1,6 +1,40 @@
+$ball-clr: hsl(203, 80%, 43%);
+$walls-clr: hsl(203, 27%, 65%);
+$bg-clr: hsl(203, 13%, 9%);
+
 body, :root {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: $bg-clr;
+  font-size: min(.8vh, 1.2vw);
+}
+
+h1 {
+  text-align: center;
+  color: $walls-clr ;
+  font-size: 4em;
+}
+
+#walls {
+  display: block;
+  position: fixed;
+  width: 60em;
+  height: 90em;
+  top: calc(50vh - 45em);
+  left: calc(50vw - 30em);
+  border: 1em solid $walls-clr ;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+
+#ball {
+  display: block;
+  position: absolute;
+  background-color: $ball-clr;
+  border-radius: 15%;
+  aspect-ratio: 1;
+  height: 5em;
+  transform: translate(-50%, -50%)
 }
