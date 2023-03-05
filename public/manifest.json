@@ -2,5 +2,7 @@
   "short_name": "Game Of Seven",
   "name": "Game Of Seven",
   "start_url": ".",
-  "display": "standalone"
+  "display": "standalone",
+  "theme_color": "#1682c5",
+  "background_color": "#14181a"
 }
