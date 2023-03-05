@@ -1,6 +1,7 @@
 $ball-clr: hsl(203, 80%, 43%);
 $walls-clr: hsl(203, 27%, 65%);
 $num-clr: hsl(210, 20%, 15%);
+$aim-clr: hsl(210, 30%, 40%);
 $bg-clr: hsl(203, 13%, 9%);
 
 body, :root {
@@ -37,7 +38,7 @@ h1 {
   border-radius: 15%;
   aspect-ratio: 1;
   height: 5em;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 
 #number {
@@ -49,4 +50,15 @@ h1 {
   pointer-events: none;
   z-index: -1;
   color: $num-clr;
+}
+
+#aim {
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 25em;
+  border-top: 1em dotted $aim-clr;
+  transform-origin: .5em;
+  top: 2em;
+  left: 2em;
 }

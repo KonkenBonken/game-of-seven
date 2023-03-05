@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Aim from "./Aim";
 
 export default function App() {
   const [number, setNumber] = useState(1);
@@ -11,7 +12,9 @@ export default function App() {
           top: '50%',
           left: '50%'
         }}
-      />
+      >
+        <Aim />
+      </div>
       <div id='number' >
         {number}
       </div>
