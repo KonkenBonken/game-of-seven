@@ -4,7 +4,7 @@ $num-clr: hsl(210, 20%, 15%);
 $aim-clr: hsl(210, 30%, 40%);
 $bg-clr: hsl(203, 13%, 9%);
 
-body, :root {
+body, :root, main {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Aim from "./Aim";
+import { Aim, getAngle } from "./Aim";
 
 export default function App() {
   const [number, setNumber] = useState(1);
 
-  return <>
+  return <main onClick={onCLick}>
     <h1>Game Of Seven</h1>
     <div id='walls' >
       <div id='ball'
@@ -19,5 +19,10 @@ export default function App() {
         {number}
       </div>
     </div>
-  </>;
+  </main>;
+}
+
+function onCLick() {
+  const angle = getAngle();
+  console.log(angle);
 }
