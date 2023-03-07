@@ -19,7 +19,7 @@ export default function App() {
       left: rect.left
     };
 
-    const hits = [nextBounce(
+    const bounces = [nextBounce(
       rect.left + rect.width / 2,
       rect.top + rect.height / 2,
       angle,
@@ -27,13 +27,13 @@ export default function App() {
     )];
 
     while (true) {
-      const lastHit = hits[hits.length - 1];
-      console.log(lastHit)
+      const lastBounce = bounces[bounces.length - 1];
+      console.log(lastBounce)
 
-      if (!lastHit || hits.length > 100) break;
+      if (!lastBounce || bounces.length > 100) break;
 
-      hits.push(nextBounce(
-        ...lastHit,
+      bounces.push(nextBounce(
+        ...lastBounce,
         walls
       ));
     }
