@@ -16,7 +16,7 @@ export default function nextBounce(
     return [x, walls.top, -θ];
   }
 
-  const goesOut = k * (relX - ballX) + m > walls.bottom;
+  const goesOut = y > walls.bottom;
   if (goesOut)
     return false;
 
