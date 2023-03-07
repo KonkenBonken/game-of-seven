@@ -19,18 +19,27 @@ export default function App() {
       left: rect.left
     };
 
-    const bounces = [nextBounce(
-      rect.left + rect.width / 2,
-      rect.top + rect.height / 2,
-      angle,
-      walls
-    )];
+    const bounces: [number, number, number][] = [],
+      firstBounce = nextBounce(
+        rect.left + rect.width / 2,
+        rect.top + rect.height / 2,
+        angle, walls
+      );
 
-    while (true) {
-      const lastBounce = bounces[bounces.length - 1];
-      console.log(lastBounce)
+    if (firstBounce) {
+      bounces.push(firstBounce);
 
-      if (!lastBounce || bounces.length > 100) break;
+      while (true) {
+        const lastBounce = bounces[bounces.length - 1];
+
+        const bounce = nextBounce(...lastBounce, walls);
+        if (bounce)
+          bounces.push(bounce);
+        else break;
+
+        if (bounces.length >= 1000) break;
+      }
+    }
 
       bounces.push(nextBounce(
         ...lastBounce,
