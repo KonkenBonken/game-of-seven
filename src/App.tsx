@@ -1,12 +1,13 @@
-import { useState, useRef, type RefObject } from "react";
+import { useState, useRef, type RefObject, type CSSProperties } from "react";
 import { Aim, getAngle } from "./Aim";
 import nextBounce from './nextBounce';
 
 export default function App() {
   const [number, setNumber] = useState(1);
   const wallsRef = useRef<HTMLElement>();
+  const [ballStyle, setBallStyle] = useState<CSSProperties>({ left: '50%', top: '50%' });
 
-  function onClick() {
+  async function onClick() {
     const angle = getAngle(),
       rect = wallsRef.current?.getBoundingClientRect();
 
@@ -41,22 +42,25 @@ export default function App() {
       }
     }
 
-      bounces.push(nextBounce(
-        ...lastBounce,
-        walls
-      ));
+    for (let i = 0; i < bounces.length; i++) {
+      const [x, y] = bounces[i];
+      setBallStyle({
+        left: x - walls.left,
+        top: y - walls.top
+      });
+      await new Promise(r => setTimeout(r, 500));
     }
+
+    setBallStyle({
+      left: '50%',
+      top: '50%'
+    });
   }
 
   return <main onClick={onClick}>
     <h1>Game Of Seven</h1>
     <div id='walls' ref={wallsRef as RefObject<HTMLDivElement>}>
-      <div id='ball'
-        style={{
-          top: '50%',
-          left: '50%'
-        }}
-      >
+      <div id='ball' style={ballStyle}>
         <Aim />
       </div>
       <div id='number' >

@@ -39,6 +39,8 @@ h1 {
   aspect-ratio: 1;
   height: 5em;
   transform: translate(-50%, -50%);
+  transition: 500ms linear;
+  transition-property: top, left;
 }
 
 #number {
