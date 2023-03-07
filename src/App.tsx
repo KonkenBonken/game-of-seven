@@ -5,6 +5,7 @@ import nextBounce from './nextBounce';
 export default function App() {
   const [number, setNumber] = useState(1);
   const wallsRef = useRef<HTMLElement>();
+  const [HPs, setHPs] = useState<any[]>([])
 
   function onClick() {
     const angle = getAngle(),
@@ -39,6 +40,15 @@ export default function App() {
         walls
       ));
     }
+
+    console.log('Hits:', hits.length - 1, hits);
+
+    setHPs(hits.map((hit, i) => hit && <div key={i} style={{
+      position: 'fixed',
+      width: '20px', height: '20px',
+      background: 'red',
+      left: hit[0], top: hit[1]
+    }} />))
   }
 
   return <main onClick={onClick}>
@@ -55,6 +65,7 @@ export default function App() {
       <div id='number' >
         {number}
       </div>
+      {HPs}
     </div>
   </main>;
 }
