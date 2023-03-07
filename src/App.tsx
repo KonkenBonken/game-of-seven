@@ -33,9 +33,7 @@ export default function App() {
       if (!lastHit || hits.length > 100) break;
 
       hits.push(nextBounce(
-        lastHit[0],
-        lastHit[1],
-        lastHit[2],
+        ...lastHit,
         walls
       ));
     }
