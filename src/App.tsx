@@ -2,6 +2,8 @@ import { useState, useRef, type RefObject, type CSSProperties } from "react";
 import { Aim, getAngle } from "./Aim";
 import nextBounce from './nextBounce';
 
+type nTuple = [number, number, number]
+
 export default function App() {
   const [number, setNumber] = useState(1);
   const wallsRef = useRef<HTMLElement>();
@@ -20,23 +22,22 @@ export default function App() {
       left: rect.left
     };
 
-    const bounces: [number, number, number][] = [],
+    const bounces: nTuple[] = [],
       firstBounce = nextBounce(
         rect.left + rect.width / 2,
         rect.top + rect.height / 2,
         angle, walls
       );
 
-    if (firstBounce) {
-      bounces.push(firstBounce);
+    if (firstBounce[2]) {
+      bounces.push(firstBounce as nTuple);
 
       while (true) {
         const lastBounce = bounces[bounces.length - 1];
 
         const bounce = nextBounce(...lastBounce, walls);
-        if (bounce)
-          bounces.push(bounce);
-        else break;
+        bounces.push(bounce as nTuple);
+        if (!bounce[2]) break;
 
         if (bounces.length >= 1000) break;
       }

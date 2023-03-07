@@ -1,7 +1,7 @@
 export default function nextBounce(
   ballX: number, ballY: number, θ: number,
   walls: { top: number, right: number, bottom: number, left: number }
-): false | [x: number, y: number, θ: number] {
+): [x: number, y: number, θ: number | false] {
 
   const
     k = Math.tan(θ),
@@ -17,8 +17,11 @@ export default function nextBounce(
   }
 
   const goesOut = y > walls.bottom;
-  if (goesOut)
-    return false;
+  if (goesOut) {
+    const y = window.innerWidth,
+      x = y / k + ballX;
+    return [x, y, false];
+  }
 
   return [relX, y, Math.PI - θ];
 }
